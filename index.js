@@ -7,6 +7,53 @@ const conn = require('./db/conn')
 
 const app = express()
 
+//Configurando Template Engine
+app.engine('handlebars', exphbs())
+app.set('view-engine', 'handlebars')
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+)
+
+//Middleware que recebe o dado JSON
+app.use(express.json())
+
+//Session Middleware
+app.use(
+    session({
+        name: "session",
+        secret: "nosso_secret",
+        resave: false,
+        saveUnitialized: false,
+        store: new FileStore({
+            logFn: function () { },
+            path: require('path').join(require('os').tmpdir(), 'sessions')
+        }),
+        cookie: {
+            secure: false,
+            maxAge: 360000,
+            expires: new Date(Date.now() + 360000),
+            httpOnly: true
+        }
+    }))
+
+//Flash Messages
+app.use(flash())
+
+//Public path
+app.use(express.static('public'))
+
+//Configurando a resposta da Sessão
+app.use((req, res, next) => {
+
+    if (req.session.userid) {
+        res.locals.session = req.session
+    }
+
+    next()
+})
+
 conn.sync()
     .then(() => {
         app.listen(3000)
