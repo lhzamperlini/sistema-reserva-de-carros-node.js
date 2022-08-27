@@ -4,8 +4,11 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const flash = require('express-flash')
 const conn = require('./db/conn')
+const tripController = require('./controllers/TripController')
 
 const app = express()
+//Importando Rotas
+const tripRoutes = require('./routes/TripRoutes')
 
 //Models
 const approvedTrip = require('./models/ApprovedTrip')
@@ -13,13 +16,14 @@ const pendingTrip = require('./models/PendingTrip')
 const user = require('./models/User')
 
 //Configurando Template Engine
-app.engine('handlebars', exphbs())
-app.set('view-engine', 'handlebars')
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
+
 app.use(
     express.urlencoded({
-        extended: true
+        extended: true,
     })
-)
+);
 
 //Middleware que recebe o dado JSON
 app.use(express.json())
@@ -58,6 +62,12 @@ app.use((req, res, next) => {
 
     next()
 })
+
+//Rotas
+app.use('/trips', tripRoutes)
+
+//Definindo Rota Padrão
+app.use('/', tripController.scheduleTrip)
 
 conn.sync({ force: true })
     .then(() => {
