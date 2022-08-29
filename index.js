@@ -9,6 +9,7 @@ const tripController = require('./controllers/TripController')
 const app = express()
 //Importando Rotas
 const tripRoutes = require('./routes/TripRoutes')
+const userRoutes = require('./routes/UserRoutes')
 
 //Models
 const approvedTrip = require('./models/ApprovedTrip')
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 
 //Rotas
 app.use('/trips', tripRoutes)
+app.use('/', userRoutes)
 
 //Definindo Rota Padrão
 app.use('/', tripController.scheduleTrip)
