@@ -35,20 +35,21 @@ module.exports = class UserController {
         const hashedPassword = bcrypt.hashSync(password, salt)
 
         //Registrando usuario com senha criptografada  no banco
-        const usertoRegister = {
+        const user = {
             login,
             password: hashedPassword
         }
 
-        try {
-            await User.create(usertoRegister)
-            req.flash('message', 'Cadastro Realizado com Sucesso')
-            res.render('user/register')
-        }
-        catch (err) {
-            console.log(err)
-        }
-
+        await User.create(user)
+            .then((user) => {
+                // Inicializando A Sessão
+                req.session.userid = user.id
+                req.flash('message', 'Cadastro realizado com sucesso!')
+                req.session.save(() => {
+                    res.redirect('/')
+                })
+            })
+            .catch((err) => console.log(err))
 
     }
 }
