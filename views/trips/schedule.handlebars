@@ -1,1 +1,44 @@
-<h1>AGENDAMENTO DE VIAGENS</h1>
+<div class="schedule">
+    <h1>Agende Sua Viagem Abaixo:</h1>
+    <form action="">
+        <fieldset>
+            <!-- USUÁRIO -->
+            <legend><b>Fórmulário de Pedido</b></legend>
+            <br>
+            <div class="cadastro">
+                <input type="text" name="passageiro" id="passageiro" class="usuario" required="">
+                <label for="passageiro" class="rotulo">Passageiro</label>
+            </div>
+            <br><br>
+            <div class="cadastro">
+                <input type="text" name="local" id="local" class="usuario" required="">
+                <label for="local" class="rotulo">Local De Saída</label>
+            </div>
+            <br><br>
+            <div class="cadastro">
+                <input type="text" name="destino" id="destino" class="usuario" required="">
+                <label for="destino" class="rotulo">Destino</label>
+            </div>
+            <br><br>
+            <div class="Datas">
+                <!-- DATA DA VIAGEM -->
+                <label for="data_viagem"><b>Data da Viagem:</b></label>
+                <input type="date" name="data_viagem" id="data_viagem" required="">
+                <br><br>
+                <!-- HORARIO -->
+                <label for="saida"><b>Horario De Saída: </b></label>
+                <input type="time" name="saida" id="saida" class="horario" required="">
+                <br><br>
+                <label for="retorno"><b>Horario De Retorno(Previsão):</b></label>
+                <input type="time" name="retorno" id="retorno" class="horario" required="">
+                <br><br>
+            </div>
+
+            <div class="botao">
+                <input type="submit" name="submit" id="submit">
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
