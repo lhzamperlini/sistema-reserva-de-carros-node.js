@@ -7,6 +7,11 @@ const ApprovedTrip = db.define('ApprovedTrip', {
         allowNull: false,
         require: true,
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        require: true,
+    },
     departurePlace: {
         type: DataTypes.STRING,
         allowNull: false,

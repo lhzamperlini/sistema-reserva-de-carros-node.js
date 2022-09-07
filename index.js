@@ -71,7 +71,7 @@ app.use('/', userRoutes)
 //Definindo Rota Padrão
 app.use('/', tripController.scheduleTrip)
 
-conn.sync()
+conn.sync({ force: true })
     .then(() => {
         app.listen(3000)
     })

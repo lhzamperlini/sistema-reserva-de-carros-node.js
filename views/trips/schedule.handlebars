@@ -1,5 +1,5 @@
 <div class="schedule">
-    <form action="">
+    <form action="/trips" method="post">
         <fieldset>
             <!-- USUÁRIO -->
             <legend><b>Agende Sua Viagem Abaixo</b></legend>
@@ -7,6 +7,11 @@
             <div class="inputBox">
                 <label for="passenger" class="rotulo">Passageiro</label>
                 <input type="text" name="passenger" class="inputUser" required="">
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <label for="email" class="rotulo">Email (Colocar conta do Expresso)</label>
+                <input type="text" name="email" class="inputUser" required="">
             </div>
             <br><br>
             <div class="inputBox">
@@ -22,8 +27,8 @@
             <div class="datas">
                 <!-- DATA DA VIAGEM -->
                 <div class="form-data">
-                    <label for="travel_date"><b>Data da Viagem:</b></label>
-                    <input type="date" name="travel_date" required="">
+                    <label for="data"><b>Data da Viagem:</b></label>
+                    <input type="date" name="data" required="">
                 </div>
                 <!-- HORARIO SAÍDA -->
                 <div class="form-data">
@@ -37,10 +42,7 @@
                 </div>
                 <br><br><br>
             </div>
-
-            <div class="botao">
-                <input type="submit" name="submit" id="submit" value="Solicitar Viagem">
-            </div>
+            <input type="submit" name="submit" id="submit" value="Solicitar Viagem">
 
         </fieldset>
     </form>

@@ -7,6 +7,11 @@ const PendingTrip = db.define('PendingTrip', {
         allowNull: false,
         require: true,
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        require: true
+    },
     departurePlace: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -18,7 +23,7 @@ const PendingTrip = db.define('PendingTrip', {
         require: true
     },
     travelData: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         require: true
     },
