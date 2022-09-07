@@ -77,6 +77,11 @@ footer span {
 }
 
 /* MENU AGENDAMENTO */
+.schedule {
+    width: 85%;
+    margin: 0 auto;
+}
+
 .schedule>h1 {
     text-align: center;
 }

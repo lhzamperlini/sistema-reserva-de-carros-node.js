@@ -52,4 +52,9 @@ module.exports = class UserController {
             .catch((err) => console.log(err))
 
     }
+
+    static async logout(req, res) {
+        await req.session.destroy()
+        res.redirect('/')
+    }
 }

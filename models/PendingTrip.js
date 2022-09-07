@@ -17,6 +17,11 @@ const PendingTrip = db.define('PendingTrip', {
         allowNull: false,
         require: true
     },
+    travelData: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        require: true
+    },
     departureTime: {
         type: DataTypes.TIME,
         allowNull: false,
