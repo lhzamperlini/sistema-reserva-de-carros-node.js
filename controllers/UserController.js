@@ -7,6 +7,32 @@ module.exports = class UserController {
         res.render('user/login')
     }
 
+    static async loginPost(req, res) {
+        const { login, password } = req.body
+
+        //Encontrar Usuario
+        const user = await User.findOne({ where: { login: login } })
+        if (!user) {
+            req.flash('message', 'Usuario não foi encontrado.')
+            res.render('user/login')
+            return
+        }
+        //Validação de senha do usuario
+        const passwordMatch = bcrypt.compareSync(password, user.password)
+        if (!passwordMatch) {
+            req.flash('message', 'Senhas não coincidem. Tente Novamente')
+            res.render('user/login')
+            return
+        }
+
+        //Inicializar a Sessão
+        req.session.userid = user.id
+        req.flash('message', 'Login efetuado com sucesso.')
+        req.session.save(() => {
+            res.redirect('/')
+        })
+    }
+
     static register(req, res) {
         res.render('user/register')
     }

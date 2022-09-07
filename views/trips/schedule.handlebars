@@ -1,37 +1,41 @@
 <div class="schedule">
-    <h1>Agende Sua Viagem Abaixo:</h1>
     <form action="">
         <fieldset>
             <!-- USUÁRIO -->
-            <legend><b>Fórmulário de Pedido</b></legend>
+            <legend><b>Agende Sua Viagem Abaixo</b></legend>
             <br>
-            <div class="cadastro">
+            <div class="inputBox">
                 <label for="passenger" class="rotulo">Passageiro</label>
-                <input type="text" name="passenger" required="">
+                <input type="text" name="passenger" class="inputUser" required="">
             </div>
             <br><br>
-            <div class="cadastro">
+            <div class="inputBox">
                 <label for="departure_place" class="rotulo">Local De Saída</label>
-                <input type="text" name="departure_place" required="">
+                <input type="text" name="departure_place" class="inputUser" required="">
             </div>
             <br><br>
-            <div class="cadastro">
+            <div class="inputBox">
                 <label for="destiny" class="rotulo">Destino</label>
-                <input type="text" name="destiny" required="">
+                <input type="text" name="destiny" class="inputUser" required="">
             </div>
             <br><br>
-            <div class="Datas">
+            <div class="datas">
                 <!-- DATA DA VIAGEM -->
-                <label for="travel_date"><b>Data da Viagem:</b></label>
-                <input type="date" name="travel_date" required="">
-                <br><br>
-                <!-- HORARIO -->
-                <label for="departure_time"><b>Horario De Saída: </b></label>
-                <input type="time" name="departure_time" required="">
-                <br><br>
-                <label for="return_time"><b>Horario De Retorno(Previsão):</b></label>
-                <input type="time" name="return_time" required="">
-                <br><br>
+                <div class="form-data">
+                    <label for="travel_date"><b>Data da Viagem:</b></label>
+                    <input type="date" name="travel_date" required="">
+                </div>
+                <!-- HORARIO SAÍDA -->
+                <div class="form-data">
+                    <label for="departure_time"><b>Horario De Saída: </b></label>
+                    <input type="time" name="departure_time" required="">
+                </div>
+                <!-- HORARIO RETORNO -->
+                <div class="form-data">
+                    <label for="return_time"><b>Horario De Retorno(Previsão):</b></label>
+                    <input type="time" name="return_time" required="">
+                </div>
+                <br><br><br>
             </div>
 
             <div class="botao">
