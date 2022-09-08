@@ -153,3 +153,44 @@ legend {
     cursor: pointer;
     border-radius: 10px;
 }
+
+/* CSS DAS TABELAS */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    margin: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+td>span {
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+}
+
+button>a {
+    text-decoration: none;
+}
+
+i {
+    align-items: center;
+    font-size: 23px;
+    color: #1C8A44;
+}
+
+.btn-action {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#reprove {
+    font-size: 23px;
+    color: red;
+}

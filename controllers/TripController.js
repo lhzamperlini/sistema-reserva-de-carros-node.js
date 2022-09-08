@@ -26,4 +26,22 @@ module.exports = class TripController {
         res.render('trips/schedule')
     }
 
+    static showPendingTrip(req, res) {
+        pendingTrip.findAll({ raw: true })
+            .then((data) => {
+                res.render('trips/pending', { trips: data })
+            })
+            .catch((err) => console.log(err))
+    }
+
+    static reproveTrip(req, res) {
+        const id = req.body.id
+
+        pendingTrip.destroy({ where: { id: id } })
+            .then(() => {
+                req.flash('message', 'A viagem foi reprovada com sucesso!')
+                res.render('trips/dashboard')
+            })
+            .catch((err) => console.log(err))
+    }
 }

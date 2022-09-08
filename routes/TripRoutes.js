@@ -6,5 +6,6 @@ const checkAuth = require('../helpers/auth').checkAuth
 router.get('/dashboard', checkAuth, tripController.dashboard)
 router.get('/', tripController.scheduleTrip)
 router.post('/', tripController.scheduleTripPost)
-router.get('/pendding', checkAuth, tripController)
+router.get('/pending', checkAuth, tripController.showPendingTrip)
+router.post('/reprove', checkAuth, tripController.reproveTrip)
 module.exports = router

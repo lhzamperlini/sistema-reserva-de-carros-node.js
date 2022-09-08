@@ -1,1 +1,30 @@
-<h1>PENNDING Trips</h1>
+<table>
+    <tr>
+        <th>PASSAGEIRO</th>
+        <th>LOCAL DE SAÍDA</th>
+        <th>DESTINO</th>
+        <th>DATA DA VIAGEM</th>
+        <th>HORÁRIO DE SAÍDA</th>
+        <th>HORÁRIO DE RETORNO (PREVISÃO)</th>
+    </tr>
+    {{#each trips}}
+    <tr>
+        <td><span>{{this.passenger}}</span></td>
+        <td><span>{{this.departurePlace}}</span></td>
+        <td><span>{{this.destiny}}</span></td>
+        <td><span>{{this.travelData}}</span></td>
+        <td><span>{{this.departureTime}}</span></td>
+        <td><span>{{this.returnTime}}</span></td>
+        <td>
+            <button class="btn-action"><a href=""><i class="bi bi-check-square"> Aprovar</i></a></button>
+            <br>
+            <form action="/trips/reprove" method="POST">
+                <input type="hidden" name="id" value={{this.id}}>
+                <button type="submit" class="btn-action">
+                    <i class="bi bi-x-lg" id="reprove">Reprovar</i>
+                </button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</table>
