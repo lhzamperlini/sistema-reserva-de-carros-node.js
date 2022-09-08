@@ -29,7 +29,7 @@ module.exports = class UserController {
         req.session.userid = user.id
         req.flash('message', 'Login efetuado com sucesso.')
         req.session.save(() => {
-            res.redirect('/')
+            res.redirect('/trips/dashboard')
         })
     }
 
@@ -72,7 +72,7 @@ module.exports = class UserController {
                 req.session.userid = user.id
                 req.flash('message', 'Cadastro realizado com sucesso!')
                 req.session.save(() => {
-                    res.redirect('/')
+                    res.redirect('/trips/dashboard')
                 })
             })
             .catch((err) => console.log(err))

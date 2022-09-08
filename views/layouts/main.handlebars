@@ -17,6 +17,8 @@
         </a>
         <ul>
             {{#if session.userid}}
+            <li><a href="/trips/pending">Viagens Pendentes</a></li>
+            <li><a href="/trips/approved">Viagens Aprovadas</a></li>
             <li><a href="/logout">SAIR</a></li>
             {{else}}
             <li><a href="/login">ENTRAR</a></li>
