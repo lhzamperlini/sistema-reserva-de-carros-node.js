@@ -1,0 +1,32 @@
+<table>
+    <tr>
+        <th><span>PASSAGEIRO</span></th>
+        <th><span>LOCAL DE SAÍDA</span></th>
+        <th><span>DESTINO</span></th>
+        <th><span>DATA DA VIAGEM</span></th>
+        {{!-- <th>HORÁRIO DE SAÍDA</th>
+        <th>HORÁRIO DE RETORNO (PREVISÃO)</th> --}}
+        <th><span>MOTORISTA</span></th>
+        <th><span>CARRO</span></th>
+    </tr>
+    {{#each trips}}
+    <tr>
+        <td><span>{{this.passenger}}</span></td>
+        <td><span>{{this.departurePlace}}</span></td>
+        <td><span>{{this.destiny}}</span></td>
+        <td><span>{{this.travelData}}</span></td>
+        {{!-- <td><span>{{this.departureTime}}</span></td>
+        <td><span>{{this.returnTime}}</span></td> --}}
+        <td><span>{{this.driver}}</span></td>
+        <td><span>{{this.car}}</span></td>
+        <br>
+        <td>
+            <span id="actions">
+                <i class="bi bi-pencil-square" id="aproveEdit"> Ver Detalhes</i>
+                <i class="bi bi-eraser-fill" id="deleteTrip"> Cancelar Agenda</i>
+            </span>
+        </td>
+        <br>
+    </tr>
+    {{/each}}
+</table>
