@@ -233,3 +233,15 @@ i:hover {
 #deleteTrip:hover {
     color: #404041;
 }
+
+/* Titulo das Tabelas */
+.title {
+    width: 60%;
+    padding: 1%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #241f17b2;
+    border: 1px solid #063D1A;
+    border-radius: 10px;
+    /* margin-bottom: 0px; */
+}

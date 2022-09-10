@@ -29,7 +29,7 @@ module.exports = class UserController {
         req.session.userid = user.id
         req.flash('message', 'Login efetuado com sucesso.')
         req.session.save(() => {
-            res.redirect('/trips/dashboard')
+            res.redirect('/trips/pending')
         })
     }
 
