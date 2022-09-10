@@ -10,4 +10,5 @@ router.get('/pending', checkAuth, tripController.showPendingTrip)
 router.post('/reprove', checkAuth, tripController.reproveTrip)
 router.get('/aprove/:id', checkAuth, tripController.aproveTrip)
 router.post('/aprove', checkAuth, tripController.aproveTripPost)
+router.get('/aproved', checkAuth, tripController.showAprovedTrip)
 module.exports = router

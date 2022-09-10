@@ -56,6 +56,7 @@ module.exports = class TripController {
     }
 
     static aproveTripPost(req, res) {
+        const id = req.body.id
         const trip = {
             passenger: req.body.passenger,
             email: req.body.email,
@@ -70,10 +71,22 @@ module.exports = class TripController {
 
         aprovedTrip.create(trip)
             .then((trip) => {
-                // Aqui será inserida uma parte para enviar um email ao requerente confirmando a solicitação
-                // Só tenho que aprender como se faz isso.
-                req.flash('message', 'A viagem foi aprovada, um email de confirmação foi enviado ao requerente!')
-                res.render('trips/dashboard')
+                pendingTrip.destroy({ where: { id: id } })
+                    .then(() => {
+                        // Aqui será inserida uma parte para enviar um email ao requerente confirmando a solicitação
+                        // Só tenho que aprender como se faz isso.        
+                        req.flash('message', 'A viagem foi aprovada, um email de confirmação foi enviado ao requerente!')
+                        res.render('trips/dashboard')
+                    })
+                    .catch((err) => console.log(err))
+            })
+            .catch((err) => console.log(err))
+    }
+
+    static showAprovedTrip(req, res) {
+        aprovedTrip.findAll({ raw: true })
+            .then((data) => {
+                res.render('trips/aproved', { trips: data })
             })
             .catch((err) => console.log(err))
     }

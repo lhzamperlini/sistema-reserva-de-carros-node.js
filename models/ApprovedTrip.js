@@ -12,6 +12,11 @@ const ApprovedTrip = db.define('ApprovedTrip', {
         allowNull: false,
         require: true,
     },
+    travelData: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        require: true
+    },
     departurePlace: {
         type: DataTypes.STRING,
         allowNull: false,
