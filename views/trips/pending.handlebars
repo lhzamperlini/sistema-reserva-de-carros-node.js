@@ -16,7 +16,8 @@
         <td><span>{{this.departureTime}}</span></td>
         <td><span>{{this.returnTime}}</span></td>
         <td>
-            <button class="btn-action"><a href=""><i class="bi bi-check-square"> Aprovar</i></a></button>
+            <button class="btn-action"><a href="/trips/aprove/{{this.id}}"><i class="bi bi-check-square">
+                        Aprovar</i></a></button>
             <br>
             <form action="/trips/reprove" method="POST">
                 <input type="hidden" name="id" value={{this.id}}>

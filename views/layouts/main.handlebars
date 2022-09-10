@@ -12,11 +12,18 @@
 
 <body>
     <nav>
-        <a href="/" id="logo">
+        {{#if session.userid}}
+        <a href="/trips/dashboard" id="logo">
             <img src="/img/logoDefensoria.png" alt="">
         </a>
+        {{else}}
+        <a href="/trips/dashboard" id="logo">
+            <img src="/img/logoDefensoria.png" alt="">
+        </a>
+        {{/if}}
         <ul>
             {{#if session.userid}}
+            <li><a href="/">Nova Viagem</a></li>
             <li><a href="/trips/pending">Viagens Pendentes</a></li>
             <li><a href="/trips/approved">Viagens Aprovadas</a></li>
             <li><a href="/logout">SAIR</a></li>

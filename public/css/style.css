@@ -20,7 +20,7 @@ nav>a>img {
 }
 
 nav>ul {
-    width: 30%;
+    width: 40%;
     display: flex;
     justify-content: space-around;
     text-decoration: none;
