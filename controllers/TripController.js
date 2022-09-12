@@ -1,5 +1,6 @@
 const pendingTrip = require('../models/PendingTrip')
 const aprovedTrip = require('../models/ApprovedTrip')
+const { raw } = require('express')
 
 module.exports = class TripController {
     static dashboard(req, res) {
@@ -40,7 +41,9 @@ module.exports = class TripController {
         pendingTrip.destroy({ where: { id: id } })
             .then(() => {
                 req.flash('message', 'A viagem foi reprovada com sucesso!')
-                res.render('trips/dashboard')
+                req.session.save(() => {
+                    res.redirect('/trips/dashboard')
+                })
             })
             .catch((err) => console.log(err))
     }
@@ -52,7 +55,7 @@ module.exports = class TripController {
             .then((trip) => {
                 res.render('trips/toAprove', { trip })
             })
-            .catch((err) => console.log())
+            .catch((err) => console.log(err))
     }
 
     static aproveTripPost(req, res) {
@@ -89,5 +92,48 @@ module.exports = class TripController {
                 res.render('trips/aproved', { trips: data })
             })
             .catch((err) => console.log(err))
+    }
+
+    static editAprovedTrip(req, res) {
+        const id = req.params.id
+        aprovedTrip.findOne({ where: { id: id }, raw: true })
+            .then((trip) => {
+                res.render('trips/toEdit', { trip })
+            })
+            .catch((err) => console.log(err))
+    }
+    static async editAprovedTripPost(req, res) {
+        const id = req.body.id
+        const trip = {
+            passenger: req.body.passenger,
+            email: req.body.email,
+            departurePlace: req.body.departure_place,
+            destiny: req.body.destiny,
+            travelData: req.body.data,
+            departureTime: req.body.departure_time,
+            returnTime: req.body.return_time,
+            driver: req.body.driver,
+            car: req.body.car
+        }
+
+        await aprovedTrip.update(trip, { where: { id: id } })
+            .then(() => {
+                req.flash('message', 'A agenda foi atualizada com sucesso!')
+                req.session.save(() => {
+                    res.redirect('/trips/aproved')
+                })
+            })
+
+    }
+
+    static async cancelTrip(req, res) {
+        const id = req.body.id
+        await aprovedTrip.destroy({ where: { id: id } })
+            .then(() => {
+                req.flash('message', 'A agenda foi cancelada com sucesso.')
+                req.session.save(() => {
+                    res.redirect('/trips/aproved')
+                })
+            })
     }
 }

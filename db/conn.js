@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
 
-const sequelize = new Sequelize('dbdefen', 'lhzamperlini', '', {
+const sequelize = new Sequelize('dbdefen', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 })

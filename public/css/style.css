@@ -224,6 +224,10 @@ i:hover {
     cursor: pointer;
 }
 
+#actions>a {
+    text-decoration: none;
+}
+
 #deleteTrip {
     font-size: 25px;
     cursor: pointer;

@@ -11,4 +11,7 @@ router.post('/reprove', checkAuth, tripController.reproveTrip)
 router.get('/aprove/:id', checkAuth, tripController.aproveTrip)
 router.post('/aprove', checkAuth, tripController.aproveTripPost)
 router.get('/aproved', checkAuth, tripController.showAprovedTrip)
+router.get('/aproved-edit/:id', checkAuth, tripController.editAprovedTrip)
+router.post('/aproved-edit', checkAuth, tripController.editAprovedTripPost)
+router.post('/aproved-cancel', checkAuth, tripController.cancelTrip)
 module.exports = router

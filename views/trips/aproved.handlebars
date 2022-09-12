@@ -1,6 +1,7 @@
 <div class="title">
     <h1>Viagens Aprovadas</h1>
 </div>
+<br><br>
 <table>
     <tr>
         <th><span>PASSAGEIRO</span></th>
@@ -25,8 +26,15 @@
         <br>
         <td>
             <span id="actions">
-                <i class="bi bi-pencil-square" id="aproveEdit"> Ver Detalhes</i>
-                <i class="bi bi-eraser-fill" id="deleteTrip"> Cancelar Agenda</i>
+                <a href="/trips/aproved-edit/{{this.id}}"><i class="bi bi-pencil-square" id="aproveEdit"> Ver
+                        Detalhes / Editar</i></a>
+                {{!-- Cancelar Viagem Agendada --}}
+                <form action="/trips/aproved-cancel" method="POST">
+                    <input type="hidden" name="id" value={{this.id}}>
+                    <button type="submit" class="btn-action">
+                        <i class="bi bi-eraser-fill" id="deleteTrip"> Cancelar Agenda</i>
+                    </button>
+                </form>
             </span>
         </td>
         <br>

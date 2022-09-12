@@ -1,0 +1,65 @@
+<div class="schedule">
+    <form action="/trips/aproved-edit" method="post">
+        <fieldset>
+            <input type="hidden" name="id" value={{trip.id}}>
+            <!-- USUÁRIO -->
+            <legend><b>Aprove a Viagem Abaixo</b></legend>
+            <br>
+            <div class="inputBox">
+                <label for="passenger" class="rotulo">Passageiro</label>
+                <input type="text" name="passenger" class="inputUser" value="{{trip.passenger}}" required="">
+            </div>
+            <br><br>
+            {{!-- EMAIL --}}
+            <div class="inputBox">
+                <label for="email" class="rotulo">Email (Colocar conta do Expresso)</label>
+                <input type="text" name="email" class="inputUser" value="{{trip.email}}" required="">
+            </div>
+            <br><br>
+            {{!-- LOCAL DE SAÍDA --}}
+            <div class="inputBox">
+                <label for="departure_place" class="rotulo">Local De Saída</label>
+                <input type="text" name="departure_place" value="{{trip.departurePlace}}" class="inputUser" required="">
+            </div>
+            <br><br>
+            {{!-- DESTINO --}}
+            <div class="inputBox">
+                <label for="destiny" class="rotulo">Destino</label>
+                <input type="text" name="destiny" value="{{trip.destiny}}" class="inputUser" required="">
+            </div>
+            <br><br>
+            {{!-- MOTORISTA --}}
+            <div class="inputBox">
+                <label for="driver" class="rotulo">Motorista</label>
+                <input type="text" name="driver" class="inputUser" value="{{trip.driver}}" required="">
+            </div>
+            <br><br>
+            {{!-- CARRO --}}
+            <div class="inputBox">
+                <label for="car" class="rotulo">Carro</label>
+                <input type="text" name="car" class="inputUser" value="{{trip.car}}" required="">
+            </div>
+            <br><br>
+            <div class="datas">
+                <!-- DATA DA VIAGEM -->
+                <div class="form-data">
+                    <label for="data"><b>Data da Viagem:</b></label>
+                    <input type="date" name="data" required="" value="{{trip.travelData}}">
+                </div>
+                <!-- HORARIO SAÍDA -->
+                <div class="form-data">
+                    <label for="departure_time"><b>Horario De Saída: </b></label>
+                    <input type="time" name="departure_time" required="" value="{{trip.departureTime}}">
+                </div>
+                <!-- HORARIO RETORNO -->
+                <div class="form-data">
+                    <label for="return_time"><b>Horario De Retorno(Previsão):</b></label>
+                    <input type="time" name="return_time" required="" value="{{trip.returnTime}}">
+                </div>
+                <br><br><br>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Editar Viagem">
+        </fieldset>
+    </form>
+
+</div>
