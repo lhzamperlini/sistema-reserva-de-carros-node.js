@@ -1,5 +1,6 @@
 const pendingTrip = require('../models/PendingTrip')
 const aprovedTrip = require('../models/ApprovedTrip')
+const reprovedTrip = require('../models/ReprovedTrip')
 const { raw } = require('express')
 
 module.exports = class TripController {
@@ -36,16 +37,42 @@ module.exports = class TripController {
     }
 
     static reproveTrip(req, res) {
+        const id = req.params.id
+
+        pendingTrip.findOne({where: {id:id}, raw: true})
+            .then((trip)=>{
+                res.render('trips/toReprove', {trip})
+            })
+            .catch((err)=>console.log(err))
+    }
+
+    static reproveTripPost(req, res){
         const id = req.body.id
 
-        pendingTrip.destroy({ where: { id: id } })
-            .then(() => {
-                req.flash('message', 'A viagem foi reprovada com sucesso!')
-                req.session.save(() => {
-                    res.redirect('/trips/dashboard')
-                })
+        const trip = {
+            passenger: req.body.passenger,
+            email: req.body.email,
+            departurePlace: req.body.departure_place,
+            destiny: req.body.destiny,
+            travelData: req.body.data,
+            departureTime: req.body.departure_time,
+            returnTime: req.body.return_time,
+            reason: req.body.reason
+        }       
+        
+        reprovedTrip.create(trip)
+            .then(()=>{
+                pendingTrip.destroy({where: {id: id}})
+                    .then(()=>{
+                        req.flash('message', 'A agenda foi cancelada com sucesso')
+                        req.session.save(() => {
+                            res.redirect('/trips')
+                        })
+                    })
             })
-            .catch((err) => console.log(err))
+            .catch((err)=>{
+                console.log(err)
+            })
     }
 
     static aproveTrip(req, res) {

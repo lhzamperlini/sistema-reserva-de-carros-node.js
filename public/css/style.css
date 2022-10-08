@@ -249,3 +249,7 @@ i:hover {
     border-radius: 10px;
     /* margin-bottom: 0px; */
 }
+
+.container-fluid > a > img{
+    width: 20%;
+}

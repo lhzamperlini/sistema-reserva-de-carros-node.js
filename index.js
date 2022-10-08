@@ -14,6 +14,7 @@ const userRoutes = require('./routes/UserRoutes')
 //Models
 const approvedTrip = require('./models/ApprovedTrip')
 const pendingTrip = require('./models/PendingTrip')
+const reprovedTrip = require('./models/ReprovedTrip')
 const user = require('./models/User')
 
 //Configurando Template Engine
@@ -71,7 +72,7 @@ app.use('/', userRoutes)
 //Definindo Rota Padrão
 app.use('/', tripController.scheduleTrip)
 
-conn.sync({})
+conn.sync()
     .then(() => {
         app.listen(3000)
     })
